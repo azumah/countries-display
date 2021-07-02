@@ -73,8 +73,7 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryInfoCell") as! CountryTableViewCell
         
         if let country = countries?[indexPath.row] {
-            cell.displayCountriesData(name: country.name, capital: country.capital, population: country.population, region: country.region, area: country.area)
-
+            cell.displayCountryData(name: country.name, capital: country.capital, population: country.population, region: country.region, area: country.area)
         }
         return cell
     }

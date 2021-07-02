@@ -35,7 +35,7 @@ class CountryTableViewCell: UITableViewCell {
     }
 
     
-    func displayCountriesData(name: String?, capital: String?, population: Int32,
+    func displayCountryData(name: String?, capital: String?, population: Int32,
                               region: String?, area: Double) {
         self.country.text = name
         //self.capital.text = capital
@@ -59,6 +59,11 @@ class CountryTableViewCell: UITableViewCell {
         self.capitalLabel.accessibilityIdentifier = "\(name!)-Capital-Label"
         self.population.accessibilityIdentifier = "\(name!)-Population"
         self.populationLabel.accessibilityIdentifier = "\(name!)-Population-Label"
+        self.region.accessibilityIdentifier = "\(name!)-Region"
+        self.regionLabel.accessibilityIdentifier = "\(name!)-Region-Label"
+        
+        self.area.accessibilityIdentifier = "\(name!)-Area"
+        self.areaLabel.accessibilityIdentifier = "\(name!)-Area-Label"
     }
     
 }

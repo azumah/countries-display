@@ -28,4 +28,18 @@ class CountryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    func displayCountriesData(name: String?, capital: String?, population: Int32) {
+        self.country.text = name
+        self.capital.text = capital
+        self.population.text = String(population)
+        
+        self.accessibilityIdentifier = "\(name!)-Cell"
+        self.country.accessibilityIdentifier = "Country"
+        self.capital.accessibilityIdentifier = "\(name!)-Capital"
+        self.capitalLabel.accessibilityIdentifier = "\(name!)-Capital-Label"
+        self.population.accessibilityIdentifier = "\(name!)-Population"
+        self.populationLabel.accessibilityIdentifier = "\(name!)-Population-Label"
+    }
+    
 }

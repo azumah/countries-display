@@ -37,9 +37,26 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
                 return
             }
             
-            self.countryTableView.reloadData()
+            self.fetchCountriesFromPersistentStore()
         }
     }
+    
+    
+    // MARK: - Helper Methods
+        private func fetchCountriesFromPersistentStore(){
+            let countriesFetchRequest: NSFetchRequest<Country> = Country.fetchRequest()
+            
+            // Get the shared NSManagedObjectContext to perform fetch
+            DataStore.shared.viewContext.perform {
+                do {
+                    // Execute request
+                    self.countries = try countriesFetchRequest.execute()
+                    self.countryTableView.reloadData()
+                }catch {
+                    debugPrint("Unable to Execute Fetch Request, \(error.localizedDescription)")
+                }
+            }
+        }
     
     
     // MARK:- UITableViewDataSource

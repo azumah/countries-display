@@ -16,6 +16,12 @@ class CountryTableViewCell: UITableViewCell {
     @IBOutlet weak var capitalStackView: UIStackView!
     @IBOutlet weak var population: UILabel!
     @IBOutlet weak var populationLabel: UILabel!
+    @IBOutlet weak var regionLabel: UILabel!
+    @IBOutlet weak var region: UILabel!
+    @IBOutlet weak var areaLabel: UILabel!
+    @IBOutlet weak var area: UILabel!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +35,8 @@ class CountryTableViewCell: UITableViewCell {
     }
 
     
-    func displayCountriesData(name: String?, capital: String?, population: Int32) {
+    func displayCountriesData(name: String?, capital: String?, population: Int32,
+                              region: String?, area: Double) {
         self.country.text = name
         //self.capital.text = capital
         
@@ -41,6 +48,10 @@ class CountryTableViewCell: UITableViewCell {
         }
         
         self.population.text = Int(population).commaFormat
+        
+        self.area.text = "\(Int(area).commaFormat) km\u{00B2}"
+        self.region.text = region
+        
         
         self.accessibilityIdentifier = "\(name!)-Cell"
         self.country.accessibilityIdentifier = "Country"

@@ -20,7 +20,7 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
         // Do any additional setup after loading the view.
 
         countryTableView.rowHeight = UITableView.automaticDimension
-        countryTableView.estimatedRowHeight = 100
+        countryTableView.estimatedRowHeight = 210
         countryTableView.dataSource = self
         countryTableView.accessibilityIdentifier = "CountryTable"
     }
@@ -54,6 +54,7 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
                     self.countries = data.sorted(by: {
                         $0.name! < $1.name!
                     })
+                    
                     self.countryTableView.reloadData()
                 }catch {
                     debugPrint("Unable to Execute Fetch Request, \(error.localizedDescription)")
@@ -72,7 +73,7 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryInfoCell") as! CountryTableViewCell
         
         if let country = countries?[indexPath.row] {
-            cell.displayCountriesData(name: country.name, capital: country.capital, population: country.population)
+            cell.displayCountriesData(name: country.name, capital: country.capital, population: country.population, region: country.region, area: country.area)
 
         }
         return cell

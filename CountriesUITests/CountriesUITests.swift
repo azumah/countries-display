@@ -57,7 +57,7 @@ class CountriesUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
-        // The purpose of this test is to check cpital cities are correct,
+        // The purpose of this test is to check capital cities are correct,
         // and that we don't try and display non-existent capitals, such as for Antarctica.
         
         let algeriaCapital = app.staticTexts["Algeria-Capital"]

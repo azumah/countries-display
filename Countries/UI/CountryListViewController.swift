@@ -50,7 +50,10 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
             DataStore.shared.viewContext.perform {
                 do {
                     // Execute request
-                    self.countries = try countriesFetchRequest.execute()
+                    let data = try countriesFetchRequest.execute()
+                    self.countries = data.sorted(by: {
+                        $0.name! < $1.name!
+                    })
                     self.countryTableView.reloadData()
                 }catch {
                     debugPrint("Unable to Execute Fetch Request, \(error.localizedDescription)")

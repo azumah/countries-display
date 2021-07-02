@@ -31,7 +31,15 @@ class CountryTableViewCell: UITableViewCell {
     
     func displayCountriesData(name: String?, capital: String?, population: Int32) {
         self.country.text = name
-        self.capital.text = capital
+        //self.capital.text = capital
+        
+        if let capitalCity = capital, !capitalCity.isEmpty {
+            self.capital.text = capitalCity
+        }else{
+            self.capitalLabel.isHidden = true
+            capitalStackView.isHidden = true
+        }
+        
         self.population.text = String(population)
         
         self.accessibilityIdentifier = "\(name!)-Cell"

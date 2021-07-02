@@ -40,7 +40,7 @@ class CountryTableViewCell: UITableViewCell {
             capitalStackView.isHidden = true
         }
         
-        self.population.text = String(population)
+        self.population.text = Int(population).commaFormat
         
         self.accessibilityIdentifier = "\(name!)-Cell"
         self.country.accessibilityIdentifier = "Country"
@@ -50,4 +50,18 @@ class CountryTableViewCell: UITableViewCell {
         self.populationLabel.accessibilityIdentifier = "\(name!)-Population-Label"
     }
     
+}
+
+
+extension Int {
+    
+    private static var commaFormatter: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter
+    }()
+    
+    var commaFormat: String {
+        return Int.commaFormatter.string(from: NSNumber(value: self))!
+    }
 }
